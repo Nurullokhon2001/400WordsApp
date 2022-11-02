@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.room.DbDao
 import com.example.myapplication.domain.model.VocabularyListModel
 import com.example.myapplication.domain.use_case.GetVocabularyUseCase
+import com.example.myapplication.domain.use_case.SearchVocabularyUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,14 +15,23 @@ import javax.inject.Inject
 @HiltViewModel
 class DictionaryListViewModel @Inject constructor(
     private val getVocabularyUseCase: GetVocabularyUseCase,
-    private val dao: DbDao
+    private val searchVocabularyUseCase: SearchVocabularyUseCase,
 ) : ViewModel() {
 
-    fun getTableList(): LiveData<List<VocabularyListModel>> {
+    fun getVocabulary(): LiveData<List<VocabularyListModel>> {
         val list = MutableLiveData<List<VocabularyListModel>>()
             viewModelScope.launch {
-                list.value = dao.getVocabulary()
+                list.value = getVocabularyUseCase.invoke()
             }
+        return list
+    }
+
+
+    fun searchVocabulary(words : String): LiveData<List<VocabularyListModel>> {
+        val list = MutableLiveData<List<VocabularyListModel>>()
+        viewModelScope.launch {
+            list.value = searchVocabularyUseCase.invoke(words)
+        }
         return list
     }
 }

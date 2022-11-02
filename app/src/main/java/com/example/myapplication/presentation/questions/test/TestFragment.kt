@@ -9,11 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentTestBinding
 import com.example.myapplication.domain.model.Question
@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TestFragment : Fragment(), View.OnClickListener {
 
-    val args: TestFragmentArgs by navArgs()
+    private val args: TestFragmentArgs by navArgs()
 
     private var _binding: FragmentTestBinding? = null
     private val binding get() = _binding!!
@@ -38,7 +38,7 @@ class TestFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTestBinding.inflate(layoutInflater, container, false)
-
+        setToolbarTitle(args.idQuestions)
         viewModel.getQuestions(args.idQuestions).observe(viewLifecycleOwner) {
             mQuestionList = it
             setQuestion()
@@ -61,7 +61,7 @@ class TestFragment : Fragment(), View.OnClickListener {
         if (mCurrentPosition == mQuestionList!!.size) {
             binding.btnSubmit.text = "Тамом"
         } else {
-            binding.btnSubmit.text = "Тасдиқ"
+            binding.btnSubmit.text = "Ба пеш"
         }
 
         binding.progressBar.progress = mCurrentPosition
@@ -88,6 +88,7 @@ class TestFragment : Fragment(), View.OnClickListener {
                 R.drawable.default_option_border_bg
             )
         }
+        setEnabledToOptionsButton(true)
     }
 
     @SuppressLint("SetTextI18n")
@@ -124,20 +125,14 @@ class TestFragment : Fragment(), View.OnClickListener {
                     val question = mQuestionList?.get(mCurrentPosition - 1)
                     if (question!!.correctOption != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-                        binding.btnSubmit.text = "Ба пеш"
 
                     } else {
                         trueAnswer++
-                        binding.btnSubmit.text = "Ба пеш"
-
                     }
-                    answerView(question.correctOption, R.drawable.correct_option_border_bg)
+                    setEnabledToOptionsButton(false)
 
-//                    if (mCurrentPosition == mQuestionList!!.size) {
-//                        binding.btnSubmit.text = "Тамом"
-//                    } else {
-//                        binding.btnSubmit.text = "Ба пеш"
-//                    }
+                    answerView(question.correctOption, R.drawable.correct_option_border_bg)
+                    binding.btnSubmit.text = "Ба пеш"
                     mSelectedOptionPosition = 0
                 }
 
@@ -154,6 +149,7 @@ class TestFragment : Fragment(), View.OnClickListener {
             requireContext(),
             R.drawable.selected_option_border_bg
         )
+        binding.btnSubmit.text = "Тасдиқ"
     }
 
     private fun answerView(answer: Int, drawableView: Int) {
@@ -174,6 +170,37 @@ class TestFragment : Fragment(), View.OnClickListener {
                 )
             }
         }
+    }
+
+    private fun setToolbarTitle(id: Int) {
+        var title = ""
+        when (id) {
+            1 -> {
+                title = "Тоҷики - Русӣ"
+            }
+            2 -> {
+                title = "Русӣ - Тоҷики"
+            }
+            3 -> {
+                title = "Англисӣ - Тоҷики"
+            }
+            4 -> {
+                title = "Англисӣ - Русӣ"
+            }
+            5 -> {
+                title = "Русӣ - Англисӣ"
+            }
+            6 -> {
+                title = "Тоҷики - Англисӣ"
+            }
+        }
+        (requireActivity() as MainActivity).supportActionBar?.title = title
+    }
+
+    private fun setEnabledToOptionsButton(isEnabled : Boolean){
+        binding.tvOptionOne.isEnabled = isEnabled
+        binding.tvOptionTwo.isEnabled = isEnabled
+        binding.tvOptionThree.isEnabled = isEnabled
     }
 
     override fun onDestroy() {
