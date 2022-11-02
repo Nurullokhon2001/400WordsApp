@@ -36,7 +36,7 @@ class DictionaryListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDictionaryListBinding.inflate(layoutInflater, container, false)
-        viewModel.getTableList().observe(viewLifecycleOwner) {
+        viewModel.getVocabulary().observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
         binding.list.adapter = adapter
@@ -51,15 +51,25 @@ class DictionaryListFragment : Fragment() {
                 menuInflater.inflate(R.menu.main_menu, menu)
                 val searchItem = menu.findItem(R.id.action_search)
                 val searchView = searchItem.actionView as SearchView
-                searchView.queryHint = "Search People"
+                searchView.queryHint = "Калимаро ворид кунед"
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        Log.e("onQueryTextSubmit", "onQueryTextSubmit: $query ")
+                        Log.e("onQueryTextSubmit", "onQueryTextSubmit: $query")
                         return true
                     }
 
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        Log.e("onQueryTextSubmit", "onQueryTextChange: $newText ")
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        if (newText.isNotEmpty()) {
+                            val new = "%$newText%"
+                            viewModel.searchVocabulary(new).observe(viewLifecycleOwner) {
+                                adapter.submitList(it)
+                            }
+                        }else{
+                            viewModel.getVocabulary().observe(viewLifecycleOwner) {
+                                adapter.submitList(it)
+                            }
+                        }
+                        Log.e("onQueryTextSubmit", "onQueryTextChange: $newText")
                         return true
                     }
                 })

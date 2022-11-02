@@ -7,6 +7,7 @@ import com.example.myapplication.domain.model.Question
 
 interface Repository {
     suspend fun getVocabulary(): List<VocabularyListModel>
+    suspend fun searchVocabulary(words :String): List<VocabularyListModel>
     fun getElementsById(id : Int): VocabularyListModel
     fun getDetailsElementById(id : Int): ElementDetailsModel
     fun getQuestions():List<Question>

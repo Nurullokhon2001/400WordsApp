@@ -39,11 +39,27 @@ class MainActivity : AppCompatActivity() {
         )
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNavigation.isVisible =
-                !(destination.id == R.id.detailsFragment &&
-                        destination.id != R.id.testFragment &&
-                        destination.id != R.id.finishTestFragment)
+
+            when (destination.id) {
+                R.id.elementListFragment -> {
+                    supportActionBar?.title = "Калимаҳо"
+                    hideBottomNavigation(true)
+                }
+                R.id.testFragment -> {
+                    hideBottomNavigation(false)
+                }
+                R.id.questionsFragment ->{
+                    hideBottomNavigation(true)
+                }
+                R.id.finishTestFragment ->{
+                    hideBottomNavigation(true)
+                }
+            }
         }
+    }
+
+    private fun hideBottomNavigation(isVisible : Boolean){
+        binding.bottomNavigation.isVisible = isVisible
     }
 
     override fun onDestroy() {

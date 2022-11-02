@@ -1,5 +1,6 @@
 package com.example.myapplication.domain.questions_use_case
 
+import android.util.Log
 import com.example.myapplication.domain.model.Question
 import com.example.myapplication.domain.model.Temporal
 import com.example.myapplication.domain.repository.Repository
@@ -75,6 +76,9 @@ class GetRusTajQuestionsUseCase @Inject constructor(
                 }
             }
             temporalQuestions.clear()
+        }
+        for (item in questions){
+            Log.e("invoke", item.toString(), )
         }
         return questions
     }

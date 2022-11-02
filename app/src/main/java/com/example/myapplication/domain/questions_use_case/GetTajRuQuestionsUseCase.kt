@@ -11,8 +11,7 @@ class GetTajRuQuestionsUseCase @Inject constructor(
 ) {
     var questions = mutableListOf<Question>()
     suspend operator fun invoke(): List<Question> {
-
-            return createQuestions()
+        return createQuestions()
     }
 
     private suspend fun createQuestions(): List<Question> {
@@ -21,12 +20,12 @@ class GetTajRuQuestionsUseCase @Inject constructor(
         for (i in 0..9) {
             val vocabulary = repository.getVocabulary().shuffled()
             for (index in 0..2) {
-                    temporalQuestions.add(
-                        Temporal(
-                            vocabulary[index].tjk,
-                            vocabulary[index].rus,
-                        )
+                temporalQuestions.add(
+                    Temporal(
+                        vocabulary[index].tjk,
+                        vocabulary[index].rus,
                     )
+                )
             }
             val a = temporalQuestions[0].from
             temporalQuestions.shuffle()
@@ -47,7 +46,7 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                             vocabulary[index2].rus!!,
                             vocabulary[(1..400).random()].rus!!,
                             vocabulary[(1..400).random()].rus!!,
-                            correctOption = index+1
+                            correctOption = index + 1
                         )
                     )
                 }
@@ -59,7 +58,7 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                             vocabulary[(1..400).random()].rus!!,
                             vocabulary[index2].rus!!,
                             vocabulary[(1..400).random()].rus!!,
-                            correctOption = index+1
+                            correctOption = index + 1
                         )
                     )
                 }
@@ -71,15 +70,15 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                             vocabulary[(1..400).random()].rus!!,
                             vocabulary[(1..400).random()].rus!!,
                             vocabulary[index2].rus!!,
-                            correctOption = index+1
+                            correctOption = index + 1
                         )
                     )
                 }
             }
             temporalQuestions.clear()
         }
-        for (item in questions){
-            Log.e("invoke", item.toString(), )
+        for (item in questions) {
+            Log.e("invoke", item.toString())
         }
         return questions
     }

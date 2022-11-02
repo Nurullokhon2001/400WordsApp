@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:background="@drawable/default_option_border_bg">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tjk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#7A8089"
+            android:textSize="15sp"
+            tools:text="111" />
+
+        <TextView
+            android:id="@+id/ru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#7A8089"
+            android:textSize="15sp"
+            tools:text="111" />
 
         <TextView
             android:id="@+id/eng"
@@ -17,52 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:textColor="#7A8089"
-            android:textSize="20sp"
+            android:layout_marginBottom="5dp"
             android:fontFamily="@font/roboto"
-            android:padding="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#7A8089"
+            android:textSize="15sp"
             tools:text="111" />
 
-        <TextView
-            android:id="@+id/ru"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="#7A8089"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tjk"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/eng"
-            tools:text="126.9045±1" />
-
-
-        <TextView
-            android:id="@+id/tjk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
-            android:gravity="end"
-            android:maxLines="1"
-            android:textColor="#7A8089"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ru"
-            app:layout_constraintTop_toBottomOf="@id/eng"
-            tools:text="1" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
