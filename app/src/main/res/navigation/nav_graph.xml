@@ -67,7 +67,7 @@
             app:destination="@id/testFragment" />
     </fragment>
     <fragment
-        android:id="@+id/formulasFragment"
-        android:name="com.example.myapplication.presentation.formulas.FormulasFragment"
-        android:label="Формула" />
+        android:id="@+id/aboutFragment"
+        android:name="com.example.myapplication.presentation.about.AboutFragment"
+        android:label="Муаллиф" />
 </navigation>

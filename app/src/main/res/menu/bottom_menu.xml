@@ -11,8 +11,8 @@
         android:icon="@drawable/ic_baseline_speaker_notes_24"
         android:title="Тест" />
 
-<!--    <item-->
-<!--        android:id="@+id/formulasFragment"-->
-<!--        android:icon="@drawable/ic_baseline_settings_24"-->
-<!--        android:title="Формула" />-->
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_baseline_how_to_reg_24"
+        android:title="Муаллиф" />
 </menu>

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.elementListFragment,
                 R.id.questionsFragment,
-                R.id.formulasFragment
+                R.id.aboutFragment
             ),
         )
 

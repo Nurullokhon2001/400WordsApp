@@ -17,7 +17,7 @@ class GetRusEngQuestionsUseCase @Inject constructor(
     private suspend fun createQuestions(): List<Question> {
         val temporalQuestions = mutableListOf<Temporal>()
 
-        for (i in 0..9) {
+        for (i in 0..14) {
             val vocabulary = repository.getVocabulary().shuffled()
             for (index in 0..2) {
                     temporalQuestions.add(

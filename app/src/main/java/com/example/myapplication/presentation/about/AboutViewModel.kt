@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.formulas
+package com.example.myapplication.presentation.about
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class FormulasViewModel @Inject constructor(
+class AboutViewModel @Inject constructor(
     private val getFormulasUseCase: GetFormulasUseCase
 ):ViewModel() {
 
