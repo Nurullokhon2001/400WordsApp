@@ -2,10 +2,7 @@ package com.example.myapplication.data
 
 import com.example.myapplication.data.data.Elements
 import com.example.myapplication.data.room.DbDao
-import com.example.myapplication.domain.model.ElementDetailsModel
-import com.example.myapplication.domain.model.VocabularyListModel
-import com.example.myapplication.domain.model.FormulasModel
-import com.example.myapplication.domain.model.Question
+import com.example.myapplication.domain.model.*
 import com.example.myapplication.domain.repository.Repository
 import javax.inject.Inject
 
@@ -24,6 +21,10 @@ class RepositoryImpl @Inject constructor(
 
     override fun getElementsById(id: Int): VocabularyListModel {
         return elements.getElementsById(id)
+    }
+
+    override suspend fun getSound(id: Int): Sounds {
+        return dbDao.getSound(id)
     }
 
     override fun getDetailsElementById(id: Int): ElementDetailsModel {

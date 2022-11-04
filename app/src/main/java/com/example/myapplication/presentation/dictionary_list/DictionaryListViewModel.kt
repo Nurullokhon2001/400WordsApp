@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.room.DbDao
+import com.example.myapplication.domain.model.Sounds
 import com.example.myapplication.domain.model.VocabularyListModel
+import com.example.myapplication.domain.use_case.GetSoundUseCase
 import com.example.myapplication.domain.use_case.GetVocabularyUseCase
 import com.example.myapplication.domain.use_case.SearchVocabularyUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,19 +16,29 @@ import javax.inject.Inject
 @HiltViewModel
 class DictionaryListViewModel @Inject constructor(
     private val getVocabularyUseCase: GetVocabularyUseCase,
+    private val getSoundUseCase: GetSoundUseCase,
     private val searchVocabularyUseCase: SearchVocabularyUseCase,
 ) : ViewModel() {
 
     fun getVocabulary(): LiveData<List<VocabularyListModel>> {
         val list = MutableLiveData<List<VocabularyListModel>>()
-            viewModelScope.launch {
-                list.value = getVocabularyUseCase.invoke()
-            }
+        viewModelScope.launch {
+            list.value = getVocabularyUseCase.invoke()
+        }
         return list
     }
 
+    private val _sound = MutableLiveData<Sounds>()
+    val sound: LiveData<Sounds> get() = _sound
 
-    fun searchVocabulary(words : String): LiveData<List<VocabularyListModel>> {
+
+    fun getSound(id: Int) {
+        viewModelScope.launch {
+            _sound.value = getSoundUseCase.invoke(id)
+        }
+    }
+
+    fun searchVocabulary(words: String): LiveData<List<VocabularyListModel>> {
         val list = MutableLiveData<List<VocabularyListModel>>()
         viewModelScope.launch {
             list.value = searchVocabularyUseCase.invoke(words)

@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ItemTableListBinding
 import com.example.myapplication.domain.model.VocabularyListModel
-import com.example.myapplication.presentation.adapter.TableListAdapter.*
+import com.example.myapplication.presentation.adapter.DictionaryListAdapter.*
 
-class TableListAdapter(
+class DictionaryListAdapter(
    private val tableListClickListener: (Int?) -> Unit
 ) : ListAdapter<VocabularyListModel, ViewHolder>(ItemCallback) {
     inner class ViewHolder(private val binding: ItemTableListBinding) :

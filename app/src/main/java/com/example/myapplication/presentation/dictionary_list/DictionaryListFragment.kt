@@ -1,5 +1,7 @@
 package com.example.myapplication.presentation.dictionary_list
 
+import android.content.res.AssetFileDescriptor
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -11,7 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentDictionaryListBinding
-import com.example.myapplication.presentation.adapter.TableListAdapter
+import com.example.myapplication.presentation.adapter.DictionaryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -20,12 +22,14 @@ class DictionaryListFragment : Fragment() {
 
     private var _binding: FragmentDictionaryListBinding? = null
     private val binding get() = _binding!!
+    private var mp: MediaPlayer? = null
 
     private val adapter by lazy {
-        TableListAdapter(
+        DictionaryListAdapter(
             tableListClickListener = {
 //           val action = ElementListFragmentDirections.actionElementListFragmentToDetailsFragment(it)
 //           findNavController().navigate(action)
+                viewModel.getSound(it!!)
             }
         )
     }
@@ -46,6 +50,10 @@ class DictionaryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val menuHost: MenuHost = requireActivity()
 
+        viewModel.sound.observe(viewLifecycleOwner) {
+            audioPlayer(it.path)
+        }
+
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.main_menu, menu)
@@ -64,7 +72,7 @@ class DictionaryListFragment : Fragment() {
                             viewModel.searchVocabulary(new).observe(viewLifecycleOwner) {
                                 adapter.submitList(it)
                             }
-                        }else{
+                        } else {
                             viewModel.getVocabulary().observe(viewLifecycleOwner) {
                                 adapter.submitList(it)
                             }
@@ -85,6 +93,27 @@ class DictionaryListFragment : Fragment() {
                 return true
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun audioPlayer(fullPath: String) {
+        try {
+            if (mp != null) {
+                mp?.stop()
+                mp?.release()
+                mp = null
+            }
+            mp = MediaPlayer()
+            val decs: AssetFileDescriptor = requireContext().resources.assets.openFd(fullPath)
+            mp?.setDataSource(decs.fileDescriptor, decs.startOffset, decs.length)
+            decs.close()
+            mp?.prepare()
+            mp?.setVolume(1f, 1f)
+            mp?.isLooping = false
+
+            mp?.start()
+        } catch (ex: Exception) {
+            Log.i("", ex.message!!)
+        }
     }
 
     override fun onDestroy() {

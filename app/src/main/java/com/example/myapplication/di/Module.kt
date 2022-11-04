@@ -42,6 +42,9 @@ object Module {
     fun provideGetRusTajQuestionsUseCase(repository: Repository) = GetRusTajQuestionsUseCase(repository)
 
     @Provides
+    fun provideGetSoundUseCase(repository: Repository) = GetSoundUseCase(repository)
+
+    @Provides
     fun provideElements() = Elements
 
 
@@ -52,7 +55,7 @@ object Module {
         app,
         AppDatabase::class.java,
         "words400"
-    ).createFromAsset("words400.sqlite").build() // The reason we can construct a database for the repo
+    ).createFromAsset("words400.sqlite") .fallbackToDestructiveMigration().build()
 
     @Provides
     fun provideYourDao(db: AppDatabase) = db.getDao()
