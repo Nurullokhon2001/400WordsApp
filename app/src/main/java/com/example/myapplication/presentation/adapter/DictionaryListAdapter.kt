@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ItemTableListBinding
-import com.example.myapplication.domain.model.VocabularyListModel
+import com.example.myapplication.domain.model.VocabularyModel
 import com.example.myapplication.presentation.adapter.DictionaryListAdapter.*
 
 class DictionaryListAdapter(
    private val tableListClickListener: (Int?) -> Unit
-) : ListAdapter<VocabularyListModel, ViewHolder>(ItemCallback) {
+) : ListAdapter<VocabularyModel, ViewHolder>(ItemCallback) {
     inner class ViewHolder(private val binding: ItemTableListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setData(model: VocabularyListModel) {
+        fun setData(model: VocabularyModel) {
             with(binding) {
                 tjk.text = model.tjk
                 ru.text = model.rus
@@ -41,12 +41,12 @@ class DictionaryListAdapter(
     }
 
 
-    object ItemCallback : DiffUtil.ItemCallback<VocabularyListModel>() {
-        override fun areItemsTheSame(oldItem: VocabularyListModel, newItem: VocabularyListModel): Boolean {
+    object ItemCallback : DiffUtil.ItemCallback<VocabularyModel>() {
+        override fun areItemsTheSame(oldItem: VocabularyModel, newItem: VocabularyModel): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: VocabularyListModel, newItem: VocabularyListModel): Boolean {
+        override fun areContentsTheSame(oldItem: VocabularyModel, newItem: VocabularyModel): Boolean {
             return oldItem == newItem
         }
     }

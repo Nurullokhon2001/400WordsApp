@@ -1,4 +1,4 @@
-package com.example.myapplication.domain.questions_use_case
+package com.example.myapplication.domain.test_use_case
 
 import android.util.Log
 import com.example.myapplication.domain.model.Question

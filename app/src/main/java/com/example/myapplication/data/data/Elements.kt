@@ -1,27 +1,27 @@
 package com.example.myapplication.data.data
 
 import com.example.myapplication.domain.model.ElementDetailsModel
-import com.example.myapplication.domain.model.VocabularyListModel
+import com.example.myapplication.domain.model.VocabularyModel
 import com.example.myapplication.domain.model.FormulasModel
 import com.example.myapplication.domain.model.Question
 
 object Elements {
-    fun getElements(): List<VocabularyListModel> {
-        val list = mutableListOf<VocabularyListModel>()
-        list.add(VocabularyListModel(1, "Адабиёт", "литература", "literature"))
-        list.add(VocabularyListModel(2, "Адад", "число", "number"))
-        list.add(VocabularyListModel(3, "Адолат", "справедливость", "justice"))
-        list.add(VocabularyListModel(4, "Азиз", "уважаемый", "dear"))
-        list.add(VocabularyListModel(5, "Ақл", "ум", "intelligence"))
-        list.add(VocabularyListModel(6, "Алов", "огонь", "fire"))
-        list.add(VocabularyListModel(7, "Алаф", "трава", "grass"))
-        list.add(VocabularyListModel(8, "Аскар", "солдат", "soldier"))
-        list.add(VocabularyListModel(9, "Атроф", "вокруг", "around"))
-        list.add(VocabularyListModel(10, "Афсона", "сказка", "story"))
+    fun getElements(): List<VocabularyModel> {
+        val list = mutableListOf<VocabularyModel>()
+        list.add(VocabularyModel(1, "Адабиёт", "литература", "literature"))
+        list.add(VocabularyModel(2, "Адад", "число", "number"))
+        list.add(VocabularyModel(3, "Адолат", "справедливость", "justice"))
+        list.add(VocabularyModel(4, "Азиз", "уважаемый", "dear"))
+        list.add(VocabularyModel(5, "Ақл", "ум", "intelligence"))
+        list.add(VocabularyModel(6, "Алов", "огонь", "fire"))
+        list.add(VocabularyModel(7, "Алаф", "трава", "grass"))
+        list.add(VocabularyModel(8, "Аскар", "солдат", "soldier"))
+        list.add(VocabularyModel(9, "Атроф", "вокруг", "around"))
+        list.add(VocabularyModel(10, "Афсона", "сказка", "story"))
         return list
     }
 
-    fun getElementsById(id: Int): VocabularyListModel {
+    fun getElementsById(id: Int): VocabularyModel {
         val position = getElements().indexOfFirst { it.id == id }
         return getElements()[position]
     }

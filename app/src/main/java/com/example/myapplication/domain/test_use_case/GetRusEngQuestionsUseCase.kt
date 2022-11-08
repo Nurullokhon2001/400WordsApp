@@ -1,4 +1,4 @@
-package com.example.myapplication.domain.questions_use_case
+package com.example.myapplication.domain.test_use_case
 
 import android.util.Log
 import com.example.myapplication.domain.model.Question
@@ -6,7 +6,7 @@ import com.example.myapplication.domain.model.Temporal
 import com.example.myapplication.domain.repository.Repository
 import javax.inject.Inject
 
-class GetTajRuQuestionsUseCase @Inject constructor(
+class GetRusEngQuestionsUseCase @Inject constructor(
     private val repository: Repository
 ) {
     var questions = mutableListOf<Question>()
@@ -20,12 +20,12 @@ class GetTajRuQuestionsUseCase @Inject constructor(
         for (i in 0..14) {
             val vocabulary = repository.getVocabulary().shuffled()
             for (index in 0..2) {
-                temporalQuestions.add(
-                    Temporal(
-                        vocabulary[index].tjk,
-                        vocabulary[index].rus,
+                    temporalQuestions.add(
+                        Temporal(
+                            vocabulary[index].rus!!,
+                            vocabulary[index].eng,
+                        )
                     )
-                )
             }
             val a = temporalQuestions[0].from
             temporalQuestions.shuffle()
@@ -34,7 +34,7 @@ class GetTajRuQuestionsUseCase @Inject constructor(
             }
 
             val index2 = vocabulary.indexOfFirst {
-                temporalQuestions[index].to == it.rus
+                temporalQuestions[index].to == it.eng
             }
 
             when (index) {
@@ -43,10 +43,10 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                         Question(
                             i,
                             question = a,
-                            vocabulary[index2].rus!!,
-                            vocabulary[(1..400).random()].rus!!,
-                            vocabulary[(1..400).random()].rus!!,
-                            correctOption = index + 1
+                            vocabulary[index2].eng!!,
+                            vocabulary[(1..400).random()].eng!!,
+                            vocabulary[(1..400).random()].eng!!,
+                            correctOption = index+1
                         )
                     )
                 }
@@ -55,10 +55,10 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                         Question(
                             i,
                             question = a,
-                            vocabulary[(1..400).random()].rus!!,
-                            vocabulary[index2].rus!!,
-                            vocabulary[(1..400).random()].rus!!,
-                            correctOption = index + 1
+                            vocabulary[(1..400).random()].eng!!,
+                            vocabulary[index2].eng!!,
+                            vocabulary[(1..400).random()].eng!!,
+                            correctOption = index+1
                         )
                     )
                 }
@@ -67,18 +67,18 @@ class GetTajRuQuestionsUseCase @Inject constructor(
                         Question(
                             i,
                             question = a,
-                            vocabulary[(1..400).random()].rus!!,
-                            vocabulary[(1..400).random()].rus!!,
-                            vocabulary[index2].rus!!,
-                            correctOption = index + 1
+                            vocabulary[(1..400).random()].eng!!,
+                            vocabulary[(1..400).random()].eng!!,
+                            vocabulary[index2].eng!!,
+                            correctOption = index+1
                         )
                     )
                 }
             }
             temporalQuestions.clear()
         }
-        for (item in questions) {
-            Log.e("invoke", item.toString())
+        for (item in questions){
+            Log.e("invoke", item.toString(), )
         }
         return questions
     }

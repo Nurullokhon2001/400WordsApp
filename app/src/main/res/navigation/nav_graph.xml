@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/questionsFragment"
         android:name="com.example.myapplication.presentation.questions.questions_list.QuestionsFragment"
-        android:label="Тест"
+        android:label="Интихоби забон"
         tools:layout="@layout/fragment_questions">
         <action
             android:id="@+id/action_questionsFragment_to_testFragment"
@@ -70,4 +70,21 @@
         android:id="@+id/aboutFragment"
         android:name="com.example.myapplication.presentation.about.AboutFragment"
         android:label="Муаллиф" />
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.myapplication.presentation.questions.quiz.QuizFragment"
+        android:label="Викторина"
+        tools:layout="@layout/fragment_quiz" />
+    <fragment
+        android:id="@+id/quizListFragment"
+        android:name="com.example.myapplication.presentation.questions.quiz_list.QuizListFragment"
+        android:label="Савол ва ҷавоб"
+        tools:layout="@layout/fragment_quiz_list" >
+        <action
+            android:id="@+id/action_quizListFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_quizListFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
 </navigation>

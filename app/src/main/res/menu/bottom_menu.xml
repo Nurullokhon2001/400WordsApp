@@ -7,12 +7,20 @@
         android:title="Калимаҳо" />
 
     <item
-        android:id="@+id/questionsFragment"
-        android:icon="@drawable/ic_baseline_speaker_notes_24"
+        android:id="@+id/quizListFragment"
+        android:icon="@drawable/ic_baseline_videogame_asset_24"
         android:title="Тест" />
+
+<!--    <item-->
+<!--        android:id="@+id/quizFragment"-->
+<!--        android:icon="@drawable/ic_baseline_videogame_asset_24"-->
+<!--        android:title="Тест" />-->
 
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_how_to_reg_24"
         android:title="Муаллиф" />
+
+
+
 </menu>

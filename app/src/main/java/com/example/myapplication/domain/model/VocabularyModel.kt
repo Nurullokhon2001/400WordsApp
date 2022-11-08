@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "words")
-data class VocabularyListModel(
+data class VocabularyModel(
     @PrimaryKey val id: Int,
     var tjk: String,
     var rus: String?,

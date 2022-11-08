@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.databinding.FragmentDetailsBinding
 import com.example.myapplication.domain.model.ElementDetailsModel
-import com.example.myapplication.domain.model.VocabularyListModel
+import com.example.myapplication.domain.model.VocabularyModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +37,7 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
-    private fun setElementData(element: VocabularyListModel) = with(binding) {
+    private fun setElementData(element: VocabularyModel) = with(binding) {
         tableName.text = element.tjk
         tableId.text = element.id.toString()
         tableWeight.text = element.rus

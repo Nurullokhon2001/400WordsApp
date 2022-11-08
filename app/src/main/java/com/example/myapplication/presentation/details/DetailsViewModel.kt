@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.domain.model.ElementDetailsModel
-import com.example.myapplication.domain.model.VocabularyListModel
+import com.example.myapplication.domain.model.VocabularyModel
 import com.example.myapplication.domain.use_case.GetDetailsElementByIdUseCase
 import com.example.myapplication.domain.use_case.GetElementsByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +16,8 @@ class DetailsViewModel @Inject constructor(
     private val getDetailsElementByIdUseCase: GetDetailsElementByIdUseCase
 ) : ViewModel() {
 
-    fun getElementsById(id: Int): LiveData<VocabularyListModel> {
-        val element = MutableLiveData<VocabularyListModel>()
+    fun getElementsById(id: Int): LiveData<VocabularyModel> {
+        val element = MutableLiveData<VocabularyModel>()
         element.value = getElementsByIdUseCase.invoke(id)
         return element
     }

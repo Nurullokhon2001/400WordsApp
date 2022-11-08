@@ -11,15 +11,15 @@ class RepositoryImpl @Inject constructor(
     private val dbDao: DbDao
 ) : Repository {
 
-    override suspend fun getVocabulary(): List<VocabularyListModel> {
+    override suspend fun getVocabulary(): List<VocabularyModel> {
         return dbDao.getVocabulary()
     }
 
-    override suspend fun searchVocabulary(words: String): List<VocabularyListModel> {
+    override suspend fun searchVocabulary(words: String): List<VocabularyModel> {
         return dbDao.searchVocabulary(words)
     }
 
-    override fun getElementsById(id: Int): VocabularyListModel {
+    override fun getElementsById(id: Int): VocabularyModel {
         return elements.getElementsById(id)
     }
 

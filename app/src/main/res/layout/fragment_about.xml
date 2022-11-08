@@ -50,7 +50,8 @@
             android:fontFamily="@font/timesbd"
             android:gravity="center"
             android:paddingHorizontal="30dp"
-            android:text="Донишгоҳ : Донишгоҳи давлатии Хуҷанд"
+            android:text="Донишгоҳ : МДТ
+ДОНИШГОҲИ ДАВЛАТИИ ХУҶАНД БА НОМИ АКАДЕМИК БОБОҶОН ҒАФУРОВ"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_copy_right" />
 

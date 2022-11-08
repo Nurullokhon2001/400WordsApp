@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.elementListFragment,
                 R.id.questionsFragment,
-                R.id.aboutFragment
+                R.id.aboutFragment,
+                R.id.quizListFragment,
             ),
         )
 
@@ -45,20 +46,23 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title = "Калимаҳо"
                     hideBottomNavigation(true)
                 }
-                R.id.testFragment -> {
+                R.id.testFragment, R.id.quizFragment -> {
                     hideBottomNavigation(false)
                 }
-                R.id.questionsFragment ->{
+                R.id.questionsFragment -> {
                     hideBottomNavigation(true)
                 }
-                R.id.finishTestFragment ->{
+                R.id.finishTestFragment -> {
+                    hideBottomNavigation(true)
+                }
+                R.id.quizListFragment -> {
                     hideBottomNavigation(true)
                 }
             }
         }
     }
 
-    private fun hideBottomNavigation(isVisible : Boolean){
+    private fun hideBottomNavigation(isVisible: Boolean) {
         binding.bottomNavigation.isVisible = isVisible
     }
 
