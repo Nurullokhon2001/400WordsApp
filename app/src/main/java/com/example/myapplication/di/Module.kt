@@ -6,7 +6,7 @@ import com.example.myapplication.data.RepositoryImpl
 import com.example.myapplication.data.data.Elements
 import com.example.myapplication.data.room.AppDatabase
 import com.example.myapplication.data.room.DbDao
-import com.example.myapplication.domain.quiz_use_case.QuizTjEngUseCase
+import com.example.myapplication.domain.quiz_use_case.QuizUseCase
 import com.example.myapplication.domain.test_use_case.GetRusTajQuestionsUseCase
 import com.example.myapplication.domain.test_use_case.GetTajRuQuestionsUseCase
 import com.example.myapplication.domain.repository.Repository
@@ -46,7 +46,7 @@ object Module {
     fun provideGetSoundUseCase(repository: Repository) = GetSoundUseCase(repository)
 
     @Provides
-    fun provideQuizTjEngUseCase(repository: Repository) = QuizTjEngUseCase(repository)
+    fun provideQuizTjEngUseCase(repository: Repository) = QuizUseCase(repository)
 
 
     @Provides

@@ -5,20 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.domain.model.VocabularyModel
-import com.example.myapplication.domain.quiz_use_case.QuizTjEngUseCase
+import com.example.myapplication.domain.quiz_use_case.QuizUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class QuizViewModel @Inject constructor(
-    private val quizTjEngUseCase: QuizTjEngUseCase,
+    private val quizUseCase: QuizUseCase,
 ) : ViewModel() {
 
     fun getVocabulary(id: Int): LiveData<VocabularyModel> {
         val list = MutableLiveData<VocabularyModel>()
         viewModelScope.launch {
-            list.value = quizTjEngUseCase.invoke(id)
+            list.value = quizUseCase.invoke(id)
         }
         return list
     }
