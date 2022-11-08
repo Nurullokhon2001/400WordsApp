@@ -11,16 +11,9 @@
         android:icon="@drawable/ic_baseline_videogame_asset_24"
         android:title="Тест" />
 
-<!--    <item-->
-<!--        android:id="@+id/quizFragment"-->
-<!--        android:icon="@drawable/ic_baseline_videogame_asset_24"-->
-<!--        android:title="Тест" />-->
-
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_how_to_reg_24"
         android:title="Муаллиф" />
-
-
 
 </menu>

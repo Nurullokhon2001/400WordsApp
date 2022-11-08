@@ -28,11 +28,6 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.myapplication.presentation.settings.SettingsFragment"
-        android:label="Танзимот"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
         android:id="@+id/testFragment"
         android:name="com.example.myapplication.presentation.questions.test.TestFragment"
         android:label="Тест"
