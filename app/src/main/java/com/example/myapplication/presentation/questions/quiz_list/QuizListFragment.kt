@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentQuizListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,11 +24,13 @@ class QuizListFragment: Fragment() {
         _binding = FragmentQuizListBinding.inflate(layoutInflater, container, false)
 
         binding.tvTest.setOnClickListener {
-            findNavController().navigate(R.id.action_quizListFragment_to_questionsFragment)
+            val bundle = QuizListFragmentDirections.actionQuizListFragmentToQuestionsFragment(1)
+            findNavController().navigate(bundle)
         }
 
         binding.tvQuiz.setOnClickListener {
-            findNavController().navigate(R.id.action_quizListFragment_to_quizFragment)
+            val bundle = QuizListFragmentDirections.actionQuizListFragmentToQuestionsFragment (2)
+            findNavController().navigate(bundle)
         }
 
 

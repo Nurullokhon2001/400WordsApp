@@ -54,12 +54,19 @@
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="com.example.myapplication.presentation.questions.questions_list.QuestionsFragment"
+        android:name="com.example.myapplication.presentation.questions.questions_list.QuestionsLangFragment"
         android:label="Интихоби забон"
-        tools:layout="@layout/fragment_questions">
+        tools:layout="@layout/fragment_questions_lang">
         <action
             android:id="@+id/action_questionsFragment_to_testFragment"
             app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_questionsFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <argument
+            android:name="quizType"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -69,7 +76,12 @@
         android:id="@+id/quizFragment"
         android:name="com.example.myapplication.presentation.questions.quiz.QuizFragment"
         android:label="Викторина"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/fragment_quiz" >
+        <argument
+            android:name="idQuestions"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
     <fragment
         android:id="@+id/quizListFragment"
         android:name="com.example.myapplication.presentation.questions.quiz_list.QuizListFragment"

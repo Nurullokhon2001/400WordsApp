@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#A8BECA"
     android:fillViewport="true"
-    tools:context=".presentation.questions.questions_list.QuestionsFragment">
+    tools:context=".presentation.questions.questions_list.QuestionsLangFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

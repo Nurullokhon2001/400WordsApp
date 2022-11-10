@@ -16,7 +16,6 @@ import com.example.myapplication.databinding.FragmentDictionaryListBinding
 import com.example.myapplication.presentation.adapter.DictionaryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class DictionaryListFragment : Fragment() {
 
@@ -51,7 +50,9 @@ class DictionaryListFragment : Fragment() {
         val menuHost: MenuHost = requireActivity()
 
         viewModel.sound.observe(viewLifecycleOwner) {
-            audioPlayer(it.path)
+           it?.let {
+               audioPlayer(it.path)
+           }
         }
 
         menuHost.addMenuProvider(object : MenuProvider {
@@ -114,6 +115,12 @@ class DictionaryListFragment : Fragment() {
         } catch (ex: Exception) {
             Log.i("", ex.message!!)
         }
+    }
+
+    override fun onDestroyView() {
+        mp = null
+        viewModel.getSound(1000)
+        super.onDestroyView()
     }
 
     override fun onDestroy() {

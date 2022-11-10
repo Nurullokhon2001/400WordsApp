@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val appBatConfiguration = AppBarConfiguration(
             setOf(
                 R.id.elementListFragment,
-                R.id.questionsFragment,
                 R.id.aboutFragment,
                 R.id.quizListFragment,
             ),
@@ -46,18 +45,17 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.title = "Калимаҳо"
                     hideBottomNavigation(true)
                 }
-                R.id.testFragment, R.id.quizFragment -> {
+                R.id.testFragment, R.id.quizFragment, R.id.questionsFragment -> {
                     hideBottomNavigation(false)
                 }
-                R.id.questionsFragment -> {
-                    hideBottomNavigation(true)
-                }
+
                 R.id.finishTestFragment -> {
                     hideBottomNavigation(true)
                 }
                 R.id.quizListFragment -> {
                     hideBottomNavigation(true)
                 }
+
             }
         }
     }
